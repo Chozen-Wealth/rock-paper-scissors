@@ -1,0 +1,35 @@
+.Score {
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    width: 400px;
+    height: 100px;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+.ScoreDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 10px;
+    height: 100%;
+    width: 100px;
+}
+.ScoreText {
+    letter-spacing: 1px;
+    font-size: 12px;
+    color: hsl(229, 64%, 46%);
+    font-weight: 600;
+}
+.ScoreNombre {
+    color: hsl(229, 25%, 31%);
+    font-size: 40px;
+    font-weight: 700;
+}
+.ScoreImg {
+    height: 100%;
+}
