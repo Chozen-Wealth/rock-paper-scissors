@@ -8,6 +8,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 10px;
+    position: relative;
 }
 .Score.dark {
     border: 2px solid rgba(0, 0, 0, 0.75);
@@ -48,6 +49,20 @@
 }
 .ScoreImg.dark {
     filter: brightness(20%);
+}
+.btnReset {
+    position: absolute;
+    right: -40px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    height: 30px;
+    width: 30px;
+}
+.btnReset.dark {
+    fill: hsl(229, 25%, 31%);
+}
+.btnReset:hover {
+    transform: rotateZ(-400deg);
 }
 
 @media (max-width:425px) {

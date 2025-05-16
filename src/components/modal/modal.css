@@ -48,6 +48,10 @@
     top: 10px;
     right: 10px;
     cursor: pointer;
+    transition: 0.2s ease;
+}
+.closeRules:hover {
+    filter: brightness(-500%) saturate(100%) drop-shadow(0px 0px 0px black);
 }
 .bgModal {
     background-color: rgba(0, 0, 0, 0.5);

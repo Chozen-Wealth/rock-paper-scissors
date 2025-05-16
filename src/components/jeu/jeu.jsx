@@ -5,13 +5,14 @@ import scissors from "../../../public/rock-paper-scissors-master/images/icon-sci
 import rock from "../../../public/rock-paper-scissors-master/images/icon-rock.svg"
 import { useState } from "react"
 
-export default function Jeu({points, setPoints, dark}){
+export default function Jeu({points, setPoints, dark, start, setStart, affichagePC, setAffichagePC}){
 
-    const [start, setStart] = useState(false)
+    
 
     const [PC, setPC] = useState("")
     const [moi, setMoi] = useState("")
     const [win, setWin] = useState(false)
+    
 
     let Choix = (choix)=>{
         const pcChoix = Math.floor(Math.random() * 3 + 1) 
@@ -23,21 +24,27 @@ export default function Jeu({points, setPoints, dark}){
         setMoi(choix)
         setPC(choixPc)
         setStart(true)
-
+        setTimeout(() => {
+            setAffichagePC(true)
+        }, 1000);
         if (
             (choix === "rock" && choixPc === "scissors") ||
             (choix === "paper" && choixPc === "rock") ||
             (choix === "scissors" && choixPc === "paper")
         ) {
             setWin(true)
-            setPoints(points + 1)
+            setTimeout(() => {
+                setPoints(points + 1)
+            }, 1000);
         } else if (
             (choix === "rock" && choixPc === "paper") ||
             (choix === "paper" && choixPc === "scissors") ||
             (choix === "scissors" && choixPc === "rock")
         ) {
             setWin(false)
-            setPoints(points - 1)
+            setTimeout(() => {
+                setPoints(points - 1)
+            }, 1000);
         } else if (choix === choixPc) {
             setWin(true)
         }
@@ -62,20 +69,34 @@ export default function Jeu({points, setPoints, dark}){
                         <div className={`divMonChoix ${dark === true ? "" : "dark"}`}>
                             <span>YOU PICKED</span>
                             <div className="mesChoix">
-                                {moi === PC ? "" : win === true ? (<div className={`win1 ${dark === true ? "" : "dark"}`}><div className={`win2 ${dark === true ? "" : "dark"}`}></div></div>): "" }
+                                {moi === PC ? "" : win === true ? affichagePC &&(<div className={`win1 ${dark === true ? "" : "dark"}`}><div className={`win2 ${dark === true ? "" : "dark"}`}></div></div>): "" }
                                 
                                 {moi === "paper" ? (<div className="divPaper"><div className={`divInner ${dark === true ? "" : "dark"}`}><img className={`paper ${dark === true ? "" : "dark"}`} src={paper} alt="" /></div></div>) : ""}
                                 {moi === "scissors" ? (<div className="divScissors"><div className={`divInner ${dark === true ? "" : "dark"}`}><img className={`scissors ${dark === true ? "" : "dark"}`} src={scissors} alt="" /></div></div>) : ""}
                                 {moi === "rock" ? (<div className="divRock"><div className={`divInner ${dark === true ? "" : "dark"}`}><img className={`rock ${dark === true ? "" : "dark"}`} src={rock} alt="" /></div></div>) : ""}
                             </div>
                         </div>
-                        <div className={`divJeuResultat ${dark === true ? "" : "dark"}`}>
+                        {!affichagePC && (
+                            <>
+                                <div className={`divJeuResultat ${dark === true ? "" : "dark"}`}>
+                                    <span>...</span>
+                                    <button className={`waiting ${dark === true ? "" : "dark"}`}>Waiting...</button>
+                                </div>
+                                <div className={`divPcChoix ${dark === true ? "" : "dark"}`}>
+                                    <span>THE HOUSE IS PICKING...</span>
+                                    <div className="jetonWait"><div className="jetonWaitInner"></div></div>
+                                </div>
+                            </>
+                        )}
+                        {affichagePC && (
+                            <>
+                                <div className={`divJeuResultat ${dark === true ? "" : "dark"}`}>
                             {win === true ? (
                                 moi === PC ? (<span>DRAW.</span>) : (<span>YOU WIN !</span>)
                             ) : (
                                 <span>YOU LOST...</span>
                             )}
-                            <button onClick={()=> setStart(false)} className={`btnPlayAgain ${dark === true ? "" : "dark"}`}>PLAY AGAIN</button>
+                            <button onClick={()=> setStart(false) + setAffichagePC(false)} className={`btnPlayAgain ${dark === true ? "" : "dark"}`}>PLAY AGAIN</button>
                         </div>
                         <div className={`divPcChoix ${dark === true ? "" : "dark"}`}>
                             <span>THE HOUSE PICKED</span>
@@ -86,6 +107,8 @@ export default function Jeu({points, setPoints, dark}){
                                 {PC === "rock" ? (<div className="divRock"><div className={`divInner ${dark === true ? "" : "dark"}`}><img className={`rock ${dark === true ? "" : "dark"}`} src={rock} alt="" /></div></div>) : ""}
                             </div>
                         </div>
+                            </>
+                        )}
                     </div>
                 </div>
             )}
