@@ -21,7 +21,7 @@ export default function Modal({dark, setDark}){
             <>
             <div onClick={()=> setActive(false)} className="bgModal">
             </div>
-                <div onClick={(e)=> e.stopPropagation()} className="ModalRules">
+                <div  className="ModalRules">
                     <img onClick={()=> setActive(false)} id="closeRules" className="closeRules" src={closeRules} alt="" />
                     <img className="imgRules" src={imgRules} alt="" />
                 </div>

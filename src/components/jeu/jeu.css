@@ -57,7 +57,7 @@
         box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
     }
     50%{
-        transform: rotateY(360deg) translateY(-50px) scale(115%);
+        transform: rotateY(360deg) translateY(-50px) scale(150%);
         box-shadow: 0px 55px 15px rgba(0, 0, 0, 0.2);
 
     }
@@ -391,6 +391,14 @@
     }
     .btnPlayAgain {
         width: fit-content;
+    }
+    .jetonWait {
+        width: 100px;
+        height: 100px;
+    }
+    .jetonWaitInner {
+        width: 75px;
+        height: 75px;
     }
     .divInner {
         width: 75px;
