@@ -378,14 +378,14 @@
     }
 }
 
-@media (max-width:425px) {
+@media (max-width:484px) {
     .Jeu {
         width: 370px;
         margin-top: 50px;
     }
     .divJeuStart {
         width: 370px;
-        flex-direction: column;
+        flex-direction: column-reverse;
         gap: 30px;
         margin-top: -25px;
     }

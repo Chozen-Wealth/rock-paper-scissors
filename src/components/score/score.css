@@ -65,7 +65,7 @@
     transform: rotateZ(-400deg);
 }
 
-@media (max-width:425px) {
+@media (max-width:484px) {
     .Score{
         width: 300px;
     }
